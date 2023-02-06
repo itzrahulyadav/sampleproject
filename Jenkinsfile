@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('Test') {
-      steps {
-        sh 'ls -la'
+      parallel {
+        stage('Test') {
+          steps {
+            sh 'ls -la'
+          }
+        }
+
+        stage('frontend test') {
+          steps {
+            sh 'echo date'
+          }
+        }
+
       }
     }
 
